@@ -15,7 +15,7 @@ extern "C" {
  * Method:    onSurfaceCreated
  * Signature: (Ljava/lang/Object;)V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceCreated
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceCreated
   (JNIEnv *, jobject, jint, jobject, jint, jint);
 
 /*
@@ -23,7 +23,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    onSurfaceDestroyed
  * Signature: (Ljava/lang/Object;)V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceDestroyed
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceDestroyed
   (JNIEnv *, jobject, jint, jobject);
 
 /*
@@ -31,9 +31,9 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    prepare
  * Signature: (Ljava/lang/String;[IIIFF)Z
  */
-JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_prepare
+JNIEXPORT jint JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_prepare
   (JNIEnv *, jobject, jstring, jstring, jintArray, jint, jint, jboolean, jfloat, jfloat);
-JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_retry
+JNIEXPORT jint JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_retry
   (JNIEnv *, jobject, jint, jstring, jintArray, jint, jint, jboolean, jfloat, jfloat);
 
 /*
@@ -41,7 +41,7 @@ JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    pause
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_pause
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_pause
   (JNIEnv *, jobject, jint);
 
 /*
@@ -49,7 +49,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    play
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_play
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_play
   (JNIEnv *, jobject, jint);
 
 /*
@@ -57,7 +57,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    stop
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_stop
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_stop
   (JNIEnv *, jobject, jint);
 
 /*
@@ -65,7 +65,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    getBufferedProgress
  * Signature: ()F
  */
-JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getBufferedProgress
+JNIEXPORT jfloat JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getBufferedProgress
   (JNIEnv *, jobject, jint);
 
 /*
@@ -73,7 +73,7 @@ JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerContro
  * Method:    getPlayProgress
  * Signature: ()F
  */
-JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getPlayProgress
+JNIEXPORT jfloat JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getPlayProgress
   (JNIEnv *, jobject, jint);
 
 /*
@@ -81,7 +81,7 @@ JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerContro
  * Method:    seekToPosition
  * Signature: (F)V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_seekToPosition
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_seekToPosition
   (JNIEnv *, jobject, jint, jfloat);
 
 /*
@@ -89,7 +89,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    resetRenderSize
  * Signature: (IIII)V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_resetRenderSize
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_resetRenderSize
   (JNIEnv *, jobject, jint, jint, jint, jint, jint);
 
 /*
@@ -97,10 +97,10 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
  * Method:    setRTMPCurl
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_setRTMPCurl
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_setRTMPCurl
   (JNIEnv *, jobject, jint, jstring);
 
-JNIEXPORT jstring JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getBuriedPoints
+JNIEXPORT jstring JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getBuriedPoints
   (JNIEnv * env, jobject obj);
 #ifdef __cplusplus
 }

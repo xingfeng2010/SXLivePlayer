@@ -1,4 +1,4 @@
-#include "./com_changba_songstudio_video_player_ELPlayerController.h"
+#include "com_xingfeng_sxliveplayer_ELPlayerController.h"
 
 #define LOG_TAG "ChangbaPlayer_JNI_Layer"
 typedef struct VideoPlayerHandle{
@@ -39,7 +39,7 @@ static int findPlayerControllerHandle() {
 }
 
 
-JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_retry(
+JNIEXPORT jint JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_retry(
         JNIEnv * env, jobject obj, jint index, jstring videoMergeFilePathParam, jintArray max_analyze_duration, jint size, jint probesize, jboolean fpsProbeSizeConfigured, jfloat minBufferedDuration, jfloat maxBufferedDuration) {
     LOGI("Enter mELPlayerController retry... index is %d", index);
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
@@ -74,7 +74,7 @@ JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     return index;
 }
 
-JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_prepare(
+JNIEXPORT jint JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_prepare(
         JNIEnv * env, jobject obj, jstring videoMergeFilePathParam,jstring rtmpUrl,
         jintArray max_analyze_duration, jint size, jint probesize,
         jboolean fpsProbeSizeConfigured, jfloat minBufferedDuration, jfloat maxBufferedDuration) {
@@ -112,8 +112,8 @@ JNIEXPORT jint JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
 }
 
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceCreated(JNIEnv * env, jobject obj, jint index, jobject surface, jint width, jint height) {
-    LOGI("enter Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceCreated...");
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceCreated(JNIEnv * env, jobject obj, jint index, jobject surface, jint width, jint height) {
+    LOGI("enter Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceCreated...");
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
         LOGI("invalid player controller index");
         return;
@@ -131,11 +131,11 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
             }
         }
     }
-    LOGI("leave Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceCreated...");
+    LOGI("leave Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceCreated...");
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceDestroyed(JNIEnv * env, jobject obj, jint index, jobject surface) {
-    LOGI("enter Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceDestroyed...");
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceDestroyed(JNIEnv * env, jobject obj, jint index, jobject surface) {
+    LOGI("enter Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceDestroyed...");
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
         LOGI("invalid player controller index");
         return;
@@ -156,10 +156,10 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
             playerHandle->surfaceObj = 0;
         }
     }
-    LOGI("leave Java_com_changba_songstudio_video_player_ELPlayerController_onSurfaceDestroyed...");
+    LOGI("leave Java_com_xingfeng_sxliveplayer_ELPlayerController_onSurfaceDestroyed...");
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_pause(JNIEnv * env, jobject obj, jint index) {
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_pause(JNIEnv * env, jobject obj, jint index) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
         LOGI("invalid player controller index");
         return;
@@ -173,7 +173,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     }
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_play(JNIEnv * env, jobject obj, jint index) {
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_play(JNIEnv * env, jobject obj, jint index) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
         LOGI("invalid player controller index");
         return;
@@ -187,7 +187,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     }
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_stop(JNIEnv * env, jobject obj, jint index) {
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_stop(JNIEnv * env, jobject obj, jint index) {
     LOGI("enter mELPlayerController Stop...");
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER){
         LOGI("invalid player controller index");
@@ -224,7 +224,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     LOGI("leave mELPlayerController Stop index:%d", index);
 }
 
-JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getBufferedProgress(JNIEnv * env, jobject obj, jint index) {
+JNIEXPORT jfloat JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getBufferedProgress(JNIEnv * env, jobject obj, jint index) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER) {
         LOGI("invalid player controller index");
         return 0.0f;
@@ -239,7 +239,7 @@ JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerContro
     return 0.0f;
 }
 
-JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getPlayProgress(JNIEnv * env, jobject obj, jint index) {
+JNIEXPORT jfloat JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getPlayProgress(JNIEnv * env, jobject obj, jint index) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER) {
         LOGI("invalid player controller index");
         return 0.0f;
@@ -254,7 +254,7 @@ JNIEXPORT jfloat JNICALL Java_com_changba_songstudio_video_player_ELPlayerContro
     return 0.0f;
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_resetRenderSize(JNIEnv * env, jobject obj, jint index, jint left, jint top, jint width, jint height) {
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_resetRenderSize(JNIEnv * env, jobject obj, jint index, jint left, jint top, jint width, jint height) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER) {
         LOGI("invalid player controller index");
         return;
@@ -268,7 +268,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     }
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_seekToPosition(JNIEnv * env, jobject obj, jint index, jfloat position) {
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_seekToPosition(JNIEnv * env, jobject obj, jint index, jfloat position) {
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER) {
         LOGI("invalid player controller index");
         return;
@@ -282,7 +282,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     }
 }
 
-JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_setRTMPCurl(JNIEnv * env, jobject obj, jint index, jstring url){
+JNIEXPORT void JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_setRTMPCurl(JNIEnv * env, jobject obj, jint index, jstring url){
     if (index < 0 || index >= PLAYER_HANDLE_NUMBER) {
         LOGI("invalid player controller index");
         return;
@@ -299,7 +299,7 @@ JNIEXPORT void JNICALL Java_com_changba_songstudio_video_player_ELPlayerControll
     }
 }
 
-JNIEXPORT jstring JNICALL Java_com_changba_songstudio_video_player_ELPlayerController_getBuriedPoints(JNIEnv * env, jobject obj) {
+JNIEXPORT jstring JNICALL Java_com_xingfeng_sxliveplayer_ELPlayerController_getBuriedPoints(JNIEnv * env, jobject obj) {
     const char * buriedPoints = LiveShowVideoController::getBuriedPoints();
     jclass strClass = env->FindClass("java/lang/String");
     jmethodID ctorID = env->GetMethodID(strClass, "<init>", "([BLjava/lang/String;)V");
