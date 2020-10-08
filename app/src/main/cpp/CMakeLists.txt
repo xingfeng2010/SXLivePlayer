@@ -33,13 +33,13 @@ file(GLOB FILES_LIB_COMMON_OPENGL_MEDIA_TEXTURE "${PATH_TO_AV_ENGINE}/libcommon/
 file(GLOB FILES_LIB_COMMON_OPENGL_MEDIA_TEX_COPIER "${PATH_TO_AV_ENGINE}/libcommon/opengl_media/texture_copier/*.cpp")
 file(GLOB FILES_LIB_COMMON_OPENSL "${PATH_TO_AV_ENGINE}/libcommon/opensl_media/*.cpp")
 
-file(GLOB FILES_LIVE_VIDEO_PLAYER "${PATH_TO_AV_ENGINE}/live_show_video_player/libliveshowvideoplayer/*.cpp")
-
 file(GLOB FILES_LIB_VIDEO_PLAYER_COMMON "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/common/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_DECODER "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/decoder/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_SYNC "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/sync/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_DRAG "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/drag/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_TEX_UPLOADER "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/texture_uploader/*.cpp")
+
+file(GLOB FILES_LIVE_VIDEO_PLAYER "${PATH_TO_AV_ENGINE}/live_show_video_player/libliveshowvideoplayer/*.cpp")
 
 add_library(av-engine STATIC
         ${FILES_LIB_COMMON}

@@ -32,7 +32,6 @@ file(GLOB FILES_LIVE_JNI_LAYER "${PATH_TO_NATIVE}/live_show_video_player/jni/*.c
 
 
 add_library(libsongstudio SHARED
-        ${FILES_JNI_LAYER}
 		${FILES_LIVE_JNI_LAYER}
         )
 
