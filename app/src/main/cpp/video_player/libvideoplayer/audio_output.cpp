@@ -164,7 +164,7 @@ bool AudioOutput::isPlaying() {
 	bool result = false;
 	SLuint32 pState = SL_PLAYSTATE_PLAYING;
 	if (0 != audioPlayerObject && NULL != (*audioPlayerPlay)) {
-		SLresult result = (*audioPlayerPlay)->GetPlayState(audioPlayerPlay, &pState);
+        pState = (*audioPlayerPlay)->GetPlayState(audioPlayerPlay, &pState);
 	} else {
 		result = false;
 	}
@@ -224,11 +224,11 @@ SLresult AudioOutput::createAudioPlayer(int channels, int accompanySampleRate) {
 	int samplesPerSec = opensl_get_sample_rate(accompanySampleRate);
 	int channelMask = getChannelMask(channels);
 	SLDataFormat_PCM dataSourceFormat = { SL_DATAFORMAT_PCM, // format type
-			channels, // channel count
-			samplesPerSec, // samples per second in millihertz
+			 (SLuint32)channels, // channel count
+			(SLuint32)samplesPerSec, // samples per second in millihertz
 			SL_PCMSAMPLEFORMAT_FIXED_16, // bits per sample
 			SL_PCMSAMPLEFORMAT_FIXED_16, // container size
-			channelMask, // channel mask
+			(SLuint32)channelMask, // channel mask
 			SL_BYTEORDER_LITTLEENDIAN // endianness
 			};
 
