@@ -11,6 +11,7 @@ set(
 )
 set(PATH_TO_NATIVE ${PATH_TO_MEDIACORE}/src/main/cpp)
 set(PATH_TO_JNI_LAYER ${PATH_TO_NATIVE}/video_player/jni)
+set(PATH_TO_LIVE_JNI_LAYER ${PATH_TO_MEDIACORE}/src/main/jni)
 set(PATH_TO_THIRDPARTY ${PATH_TO_NATIVE}/3rdparty)
 set(PATH_TO_PRE_BUILT ${PATH_TO_THIRDPARTY}/prebuilt/${ANDROID_ABI})
 
@@ -28,14 +29,14 @@ include_directories(${PATH_TO_NATIVE}/live_show_video_player/)
 include_directories(${PATH_TO_NATIVE}/video_player/)
 
 file(GLOB FILES_JNI_LAYER "${PATH_TO_JNI_LAYER}/*.cpp")
-file(GLOB FILES_LIVE_JNI_LAYER "${PATH_TO_NATIVE}/live_show_video_player/jni/*.cpp")
+file(GLOB FILES_LIVE_JNI_LAYER "${PATH_TO_LIVE_JNI_LAYER}/*.cpp")
 
 
-add_library(libsongstudio SHARED
+add_library(songstudio SHARED
 		${FILES_LIVE_JNI_LAYER}
         )
 
-target_link_libraries( libsongstudio
+target_link_libraries( songstudio
                        log
                        android
                        GLESv2
