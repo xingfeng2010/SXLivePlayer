@@ -33,6 +33,7 @@ file(GLOB FILES_LIB_COMMON_OPENGL_MEDIA_TEXTURE "${PATH_TO_AV_ENGINE}/libcommon/
 file(GLOB FILES_LIB_COMMON_OPENGL_MEDIA_TEX_COPIER "${PATH_TO_AV_ENGINE}/libcommon/opengl_media/texture_copier/*.cpp")
 file(GLOB FILES_LIB_COMMON_OPENSL "${PATH_TO_AV_ENGINE}/libcommon/opensl_media/*.cpp")
 
+file(GLOB FILES_LIB_VIDEO_PLAYER "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_COMMON "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/common/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_DECODER "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/decoder/*.cpp")
 file(GLOB FILES_LIB_VIDEO_PLAYER_SYNC "${PATH_TO_AV_ENGINE}/video_player/libvideoplayer/sync/*.cpp")
@@ -51,6 +52,7 @@ add_library(av-engine STATIC
         ${FILES_LIB_COMMON_OPENGL_MEDIA_RENDER}
         ${FILES_LIB_COMMON_OPENGL_MEDIA_TEXTURE}
         ${FILES_LIB_COMMON_OPENGL_MEDIA_TEX_COPIER}
+        ${FILES_LIB_VIDEO_PLAYER}
         ${FILES_LIB_VIDEO_PLAYER_COMMON}
         ${FILES_LIB_VIDEO_PLAYER_DECODER}
         ${FILES_LIB_VIDEO_PLAYER_SYNC}
