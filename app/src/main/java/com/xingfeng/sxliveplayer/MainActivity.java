@@ -2,7 +2,9 @@ package com.xingfeng.sxliveplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +25,15 @@ public class MainActivity extends AppCompatActivity {
         forward_video_player.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String path = "/mnt/sdcard/a_songstudio/huahua.mp4";
+                String path = "rtmp://58.200.131.2:1935/livetv/hunantv";
                 ELLivePlayerController.getInstance().init(path, true);
                 Intent intent = new Intent(MainActivity.this, SpeedUpFirstScreenPlayerActivity.class);
                 startActivity(intent);
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 10);
+        }
     }
 }

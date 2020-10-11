@@ -74,7 +74,7 @@ public class ELLivePlayerController {
 					//Retry 必须在新的线程中调用
 					new Thread(){
 						public void run(){
-							String path = "/mnt/sdcard/a_songstudio/huahua.mp4";
+							String path = "rtmp://58.200.131.2:1935/livetv/hunantv";
 							playerController.retry(path, "", new int[] { 1250000, 1750000, 2000000 }, probeSize, true, 2.0f,
 						4.0f, new OnInitializedCallback(){
 								public void onInitialized(OnInitialStatus onInitialStatus) {
