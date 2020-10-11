@@ -45,7 +45,7 @@ public class SpeedUpFirstScreenPlayerActivity extends Activity implements OnSeek
 		current_time_label = (TextView) findViewById(R.id.current_time_label);
 		end_time_label = (TextView) findViewById(R.id.end_time_label);
 		playerController = ELLivePlayerController.getInstance().getPlayerController();
-		surfaceView.getLayoutParams().height = getWindowManager().getDefaultDisplay().getHeight();
+		//surfaceView.getLayoutParams().height = getWindowManager().getDefaultDisplay().getHeight();
 		SurfaceHolder mSurfaceHolder = surfaceView.getHolder();
 		mSurfaceHolder.addCallback(previewCallback);
 		findViewById(R.id.pause_btn).setOnClickListener(new OnClickListener() {

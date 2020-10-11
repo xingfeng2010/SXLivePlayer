@@ -69,6 +69,8 @@ int LiveShowMediaCodecVideoDecoder::initAnalyzeDurationAndProbesize(int* max_ana
 	if(fpsProbeSizeConfigured){
 		pFormatCtx->fps_probe_size = 3;
 	}
+
+	return 1;
 }
 
 int LiveShowMediaCodecVideoDecoder::openFile(DecoderRequestHeader *requestHeader){

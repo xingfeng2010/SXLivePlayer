@@ -92,6 +92,8 @@ int LiveShowFFMPEGVideoDecoder::initAnalyzeDurationAndProbesize(int* max_analyze
 	if(fpsProbeSizeConfigured){
 		pFormatCtx->fps_probe_size = 3;
 	}
+
+	return 1;
 }
 
 bool LiveShowFFMPEGVideoDecoder::isNeedRetry() {
