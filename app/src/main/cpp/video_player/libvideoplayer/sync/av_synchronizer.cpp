@@ -130,11 +130,11 @@ FrameTexture* AVSynchronizer::getFirstRenderTexture() {
 }
 
 int AVSynchronizer::fillAudioData(byte* outData, int bufferSize) {
-//	LOGI("enter AVSynchronizer::fillAudioData... buffered is %d", buffered);
+	LOGI("enter AVSynchronizer::fillAudioData... buffered is %s", (buffered? "success":"false"));
 	this->signalDecodeThread();
 	this->checkPlayState();
 	if(buffered) {
-//		LOGI("fillAudioData if(buffered) circleFrameTextureQueue->getValidSize() %d", circleFrameTextureQueue->getValidSize());
+		LOGI("fillAudioData if(buffered) circleFrameTextureQueue->getValidSize() %d", circleFrameTextureQueue->getValidSize());
 		memset(outData, 0, bufferSize);
 		return bufferSize;
 	}
@@ -143,7 +143,7 @@ int AVSynchronizer::fillAudioData(byte* outData, int bufferSize) {
 		if (NULL == currentAudioFrame) {
 			pthread_mutex_lock(&audioFrameQueueMutex);
 			int count = audioFrameQueue->size();
-//			LOGI("audioFrameQueue->size() is %d", count);
+			LOGI("audioFrameQueue->size() is %d", count);
 			if (count > 0) {
 				AudioFrame *frame = audioFrameQueue->front();
 				bufferedDuration -= frame->duration;
@@ -184,7 +184,7 @@ int AVSynchronizer::fillAudioData(byte* outData, int bufferSize) {
 			break;
 		}
 	}
-//	LOGI("leave AVSynchronizer::fillAudioData...");
+	LOGI("leave AVSynchronizer::fillAudioData...");
 	return needBufferSize - bufferSize;
 }
 
@@ -385,7 +385,7 @@ bool AVSynchronizer::addFrames(float thresholdDuration, std::list<MovieFrame*>* 
 			if (frame->getType() == MovieFrameTypeAudio) {
 				AudioFrame* audioFrame = (AudioFrame*) frame;
 				audioFrameQueue->push(audioFrame);
-//				LOGI("audioFrameQueue->push(audioFrame) position is %.4f", audioFrame->position);
+				LOGI("audioFrameQueue->push(audioFrame) position is %.4f", audioFrame->position);
 				bufferedDuration += audioFrame->duration;
 			}
 		}
@@ -516,6 +516,7 @@ void AVSynchronizer::signalDecodeThread() {
 }
 
 bool AVSynchronizer::checkPlayState() {
+
 	if (NULL == decoder || NULL == circleFrameTextureQueue || NULL == audioFrameQueue) {
 		LOGI("NULL == decoder || NULL == circleFrameTextureQueue || NULL == audioFrameQueue");
 		return false;
@@ -529,15 +530,15 @@ bool AVSynchronizer::checkPlayState() {
 	int leftVideoFrames = decoder->validVideo() ? circleFrameTextureQueue->getValidSize() : 0;
 	int leftAudioFrames = decoder->validAudio() ? audioFrameQueue->size() : 0;
 	const int leftFrames = leftVideoFrames + leftAudioFrames;
-//	LOGI("leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f",
-//			leftAudioFrames, leftVideoFrames, bufferedDuration);
+	LOGI("leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f",
+			leftAudioFrames, leftVideoFrames, bufferedDuration);
 
 
 	this->useForstatistic(leftVideoFrames);
 
 	if (leftVideoFrames == 1 || leftAudioFrames == 0) {
-//		LOGI("Setting Buffered is True : leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f",
-//				leftAudioFrames, leftVideoFrames, bufferedDuration);
+		LOGI("Setting Buffered is True : leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f",
+				leftAudioFrames, leftVideoFrames, bufferedDuration);
 		buffered = true;
 		if (!isLoading) {
 			isLoading = true;
@@ -548,15 +549,18 @@ bool AVSynchronizer::checkPlayState() {
 			usleep(0.2 * 1000000);
 			isCompleted = true;
 			onCompletion();
-//			LOGI("onCompletion...");
+			LOGI("onCompletion...");
 			return true;
 		}
 	} else {
 		bool isBufferedDurationIncreasedToMin = leftVideoFrames >= int(minBufferedDuration*getVideoFPS()) && (bufferedDuration >= minBufferedDuration);
 
+		LOGI("decoder->hasSeekReq():%s",(decoder->hasSeekReq() ? "hasSeekReq":"no hasSeekReq"));
+		LOGI("isBufferedDurationIncreasedToMin:%s",(isBufferedDurationIncreasedToMin ? "hasSeekReq":"no hasSeekReq"));
+		LOGI("decoder->isEOF():%s",(decoder->isEOF() ? "hasSeekReq":"no hasSeekReq"));
 		if (!decoder->hasSeekReq() && (isBufferedDurationIncreasedToMin || decoder->isEOF())) {
-//			LOGI("Setting Buffered is False : leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f, minBufferedDuration is %f",
-//					leftAudioFrames, leftVideoFrames, bufferedDuration, minBufferedDuration);
+			LOGI("Setting Buffered is False : leftAudioFrames is %d, leftVideoFrames is %d, bufferedDuration is %f, minBufferedDuration is %f",
+					leftAudioFrames, leftVideoFrames, bufferedDuration, minBufferedDuration);
 			buffered = false;
 			//回调android客户端hide loading dialog
 			if (isLoading) {
@@ -761,7 +765,7 @@ void AVSynchronizer::hideLoadingDialog() {
 }
 
 void AVSynchronizer::showLoadingDialog() {
-	jniCallbackWithNoArguments("showLoadingDialog", "()V");
+	//jniCallbackWithNoArguments("showLoadingDialog", "()V");
 }
 
 int AVSynchronizer::onCompletion() {

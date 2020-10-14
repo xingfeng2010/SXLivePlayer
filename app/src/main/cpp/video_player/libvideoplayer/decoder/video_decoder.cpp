@@ -663,7 +663,7 @@ bool VideoDecoder::decodeAudioFrames(AVPacket* packet, std::list<MovieFrame*> * 
 	bool finished = false;
 
 	int pktSize = packet->size;
-
+	LOGI("decodeAudioFrames %d",pktSize);
 	while (pktSize > 0) {
 		int gotframe = 0;
 		int len = avcodec_decode_audio4(audioCodecCtx, audioFrame, &gotframe,
@@ -774,8 +774,10 @@ std::list<MovieFrame*>* VideoDecoder::decodeFrames(float minDuration, int* decod
 			break;
 		}
 		if (packet.stream_index == videoStreamIndex) {
+			LOGI("decodeVideoFrame videoStreamIndex");
 			this->decodeVideoFrame(packet, decodeVideoErrorState);
 		} else if (packet.stream_index == audioStreamIndex) {
+			LOGI("decodeAudioFrames audioStreamIndex");
 			finished = decodeAudioFrames(&packet, result, decodedDuration, minDuration, decodeVideoErrorState);
 		}
 		av_free_packet(&packet);
