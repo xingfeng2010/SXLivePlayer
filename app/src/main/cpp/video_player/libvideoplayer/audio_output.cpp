@@ -66,6 +66,7 @@ SLresult AudioOutput::start() {
 //	LOGI(" Enqueue the first buffer to start");
 	// Enqueue the first buffer to start
 	producePacket();
+	return SL_RESULT_SUCCESS;
 }
 
 SLresult AudioOutput::initSoundTrack(int channels, int accompanySampleRate, audioPlayerCallback produceDataCallback, void* ctx) {
@@ -164,7 +165,7 @@ bool AudioOutput::isPlaying() {
 	bool result = false;
 	SLuint32 pState = SL_PLAYSTATE_PLAYING;
 	if (0 != audioPlayerObject && NULL != (*audioPlayerPlay)) {
-        pState = (*audioPlayerPlay)->GetPlayState(audioPlayerPlay, &pState);
+		SLresult result = (*audioPlayerPlay)->GetPlayState(audioPlayerPlay, &pState);
 	} else {
 		result = false;
 	}

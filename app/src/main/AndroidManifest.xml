@@ -26,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SpeedUpFirstScreenPlayerActivity"/>
+        <activity android:name="com.changba.songstudio.video.ChangbaPlayerActivity"/>
     </application>
 
 </manifest>

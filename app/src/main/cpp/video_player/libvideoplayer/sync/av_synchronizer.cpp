@@ -403,6 +403,7 @@ void* AVSynchronizer::startDecoderThread(void* ptr) {
 	while (synchronizer->isOnDecoding) {
 		synchronizer->decode();
 	}
+	return 0;
 }
 
 void AVSynchronizer::decode(){
@@ -757,26 +758,27 @@ void AVSynchronizer::viewStreamMetaCallback(int videoWidth, int videoHeight,
 }
 
 int AVSynchronizer::videoDecodeException() {
-	jniCallbackWithNoArguments("videoDecodeException", "()V");
+    return jniCallbackWithNoArguments("videoDecodeException", "()V");
 }
 
-void AVSynchronizer::hideLoadingDialog() {
-	jniCallbackWithNoArguments("hideLoadingDialog", "()V");
+int AVSynchronizer::hideLoadingDialog() {
+    return jniCallbackWithNoArguments("hideLoadingDialog", "()V");
 }
 
-void AVSynchronizer::showLoadingDialog() {
-	//jniCallbackWithNoArguments("showLoadingDialog", "()V");
+int AVSynchronizer::showLoadingDialog() {
+    return jniCallbackWithNoArguments("showLoadingDialog", "()V");
 }
 
 int AVSynchronizer::onCompletion() {
-	jniCallbackWithNoArguments("onCompletion", "()V");
+    return jniCallbackWithNoArguments("onCompletion", "()V");
 }
 
 int AVSynchronizer::jniCallbackWithNoArguments(char* signature, char* params){
-	jniCallbackWithArguments(signature, params);
+    return jniCallbackWithArguments(signature, params);
 }
 
 int AVSynchronizer::jniCallbackWithArguments(const char* signature, const char* params, ...){
+	LOGI("jniCallbackWithArguments method=%s",signature);
 	JNIEnv *env;
 	if (g_jvm->AttachCurrentThread(&env, NULL) != JNI_OK) {
 		LOGE("%s: AttachCurrentThread() failed", __FUNCTION__);

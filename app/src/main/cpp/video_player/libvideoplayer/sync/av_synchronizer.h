@@ -203,10 +203,10 @@ protected:
 	void clearAudioFrameQueue();
 
 	//jni 调java层方法
-	void showLoadingDialog();
+	int showLoadingDialog();
 	int onCompletion();
 	int videoDecodeException();
-	void hideLoadingDialog();
+	int hideLoadingDialog();
 	int jniCallbackWithNoArguments(char* signature, char* params);
 	int jniCallbackWithArguments(const char* signature, const char* params, ...);
 };

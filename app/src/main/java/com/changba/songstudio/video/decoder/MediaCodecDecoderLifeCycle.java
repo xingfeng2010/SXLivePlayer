@@ -17,8 +17,8 @@ public abstract class MediaCodecDecoderLifeCycle {
 		boolean ret = false;
 		Log.i("problem", "useMediaCodec " + useMediaCodec);
 		if (useMediaCodec) {
-			String manufacturer = android.os.Build.MANUFACTURER;
-			String model = android.os.Build.MODEL;
+			String manufacturer = Build.MANUFACTURER;
+			String model = Build.MODEL;
 			Log.d("problem", "manufacturer=" + manufacturer + " model=" + model);
 			if (MediaCodecDecoder.IsInAndriodHardwareBlacklist()){
 				ret = false;

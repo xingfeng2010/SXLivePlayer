@@ -18,6 +18,6 @@ public interface OnStoppedCallback {
 	 * @param videoQueueEmpty 解码缓冲区空
 	 */
 	public void getstaticsData(long beginOpen, float successOpen, float firstScreenTimeMills, float failOpen, int failOpenType, float duration,
-			List<Double> retryOpen, List<Double> videoQueueFull, List<Double> videoQueueEmpty);
+                               List<Double> retryOpen, List<Double> videoQueueFull, List<Double> videoQueueEmpty);
 }
 

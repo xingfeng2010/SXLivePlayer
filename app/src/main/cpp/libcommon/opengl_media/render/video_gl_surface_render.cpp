@@ -254,10 +254,10 @@ void VideoGLSurfaceRender::renderToCroppedTexture(GLuint inputTexId, GLuint outp
 	}
 
 	glUseProgram (mGLProgId);
-	const GLfloat _vertices[] = { -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f };
+    static const GLfloat _vertices[] = { -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f };
 	glVertexAttribPointer(mGLVertexCoords, 2, GL_FLOAT, 0, 0, _vertices);
 	glEnableVertexAttribArray(mGLVertexCoords);
-	const GLfloat texCoords[] = { 0.0f, fromYPosition, 1.0f, fromYPosition, 0.0f, toYPosition, 1.0f, toYPosition };
+    static const GLfloat texCoords[] = { 0.0f, fromYPosition, 1.0f, fromYPosition, 0.0f, toYPosition, 1.0f, toYPosition };
 	glVertexAttribPointer(mGLTextureCoords, 2, GL_FLOAT, 0, 0, texCoords);
 	glEnableVertexAttribArray(mGLTextureCoords);
 

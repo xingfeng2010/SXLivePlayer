@@ -3,7 +3,7 @@
 #include <android/native_window.h>
 #include <android/native_window_jni.h>
 
-#include "../libvideoplayer/drag/video_player_drag_controller.h"
+#include "../cpp/video_player/libvideoplayer/drag/video_player_drag_controller.h"
 /* Header for class com_changba_songstudio_video_player_ChangbaPlayer */
 
 #ifndef _Included_com_changba_songstudio_video_player_ChangbaPlayer

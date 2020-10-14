@@ -95,7 +95,7 @@ public class MediaCodecDecoder implements SurfaceTexture.OnFrameAvailableListene
 
 		m_extractor.selectTrack(m_videoTrackIndex);
 		m_format = m_extractor.getTrackFormat(m_videoTrackIndex);
-		if (android.os.Build.VERSION.SDK_INT == 16) {
+		if (Build.VERSION.SDK_INT == 16) {
 			// NOTE: some android 4.1 devices (such as samsung GT-I8552) will
 			// crash in MediaCodec.configure
 			// if we don't set MediaFormat.KEY_MAX_INPUT_SIZE.
@@ -593,7 +593,7 @@ public class MediaCodecDecoder implements SurfaceTexture.OnFrameAvailableListene
 		m_format.setByteBuffer("csd-0", ByteBuffer.wrap(sps));
 		m_format.setByteBuffer("csd-1", ByteBuffer.wrap(pps));
 
-		if (android.os.Build.VERSION.SDK_INT == 16) {
+		if (Build.VERSION.SDK_INT == 16) {
 			// NOTE: some android 4.1 devices (such as samsung GT-I8552) will
 			// crash in MediaCodec.configure
 			// if we don't set MediaFormat.KEY_MAX_INPUT_SIZE.
@@ -978,8 +978,8 @@ public class MediaCodecDecoder implements SurfaceTexture.OnFrameAvailableListene
 	}
 
 	public static boolean IsInAndriodHardwareBlacklist() {
-		String manufacturer = android.os.Build.MANUFACTURER;
-		String model = android.os.Build.MODEL;
+		String manufacturer = Build.MANUFACTURER;
+		String model = Build.MODEL;
 		Log.i("problem", manufacturer);
 		Log.i("problem", model);
 
@@ -1015,8 +1015,8 @@ public class MediaCodecDecoder implements SurfaceTexture.OnFrameAvailableListene
 	}
 
 	public static boolean IsInAndriodHardwareWhitelist() {
-		String manufacturer = android.os.Build.MANUFACTURER;
-		String model = android.os.Build.MODEL;
+		String manufacturer = Build.MANUFACTURER;
+		String model = Build.MODEL;
 
 		if ((manufacturer.compareTo("samsung") == 0) && (model.compareTo("GT-I9152") == 0))
 			return true;
