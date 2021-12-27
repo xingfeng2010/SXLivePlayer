@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         live_video_player.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String path = "rtmp://58.200.131.2:1935/livetv/hunantv";
+                String path = "http://mn.maliuedu.com/music/input.mp4";
                 ELLivePlayerController.getInstance().init(path, true);
                 Intent intent = new Intent(MainActivity.this, SpeedUpFirstScreenPlayerActivity.class);
                 startActivity(intent);

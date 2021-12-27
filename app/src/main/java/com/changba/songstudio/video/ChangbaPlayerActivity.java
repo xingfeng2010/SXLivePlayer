@@ -218,7 +218,7 @@ public class ChangbaPlayerActivity extends Activity implements OnSeekBarChangeLi
 				};
 				playerController.setUseMediaCodec(false);
 				int width = getWindowManager().getDefaultDisplay().getWidth();
-				String path = "rtmp://58.200.131.2:1935/livetv/hunantv";
+				String path = "rtmp://ns8.indexforce.com/home/mystream";
 				//String path = "sdcard/test_record.mp4";
 				playerController.init(path, holder.getSurface(), width, width, new OnInitializedCallback() {
 					public void onInitialized(OnInitialStatus onInitialStatus) {
